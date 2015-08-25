@@ -6,6 +6,7 @@
     var config = cfg || {};
     var bufferLen = config.bufferLen || 4096;
     var numChannels = config.numChannels || 2;
+    var outSampleRate = config.outSampleRate || source.context.sampleRate;
     this.context = source.context;
     this.node = (this.context.createScriptProcessor ||
                  this.context.createJavaScriptNode).call(this.context,
@@ -15,6 +16,7 @@
       command: 'init',
       config: {
         sampleRate: this.context.sampleRate,
+        outSampleRate: outSampleRate,
         numChannels: numChannels
       }
     });
